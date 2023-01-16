@@ -1,0 +1,16 @@
+[
+{
+  "modid": "net.buycraft",
+  "name": "BuycraftX",
+  "description": "Forge version of the BuycraftX plugin for servers",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://www.tebex.io/",
+  "updateUrl": "",
+  "authorList": ["Tebex, theminecoder, virustotalop, maximuscoder"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
