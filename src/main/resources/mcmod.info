@@ -1,6 +1,6 @@
 [
 {
-  "modid": "net.buycraft",
+  "modid": "buycraft",
   "name": "BuycraftX",
   "description": "Forge version of the BuycraftX plugin for servers",
   "version": "${version}",
