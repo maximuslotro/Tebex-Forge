@@ -20,9 +20,9 @@ plugins {
 apply plugin: 'forge'
 apply plugin: 'java'
 
-version = "1.1"
+version = "1.2"
 group= "net.buycraft" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "buycraft"
+archivesBaseName = 'BuycraftX-Forge-1.7.10'
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 minecraft {
@@ -36,15 +36,19 @@ dependencies {
         compile 'com.squareup.retrofit2:converter-gson:2.9.0'
 }
 
-shadowJar {
-    configurations = [project.configurations.shadow]
-    relocate 'okhttp3', 'net.buycraft.plugin.internal.okhttp3'
-    relocate 'okio', 'net.buycraft.plugin.internal.okio'
-    relocate 'retrofit2', 'net.buycraft.plugin.internal.retrofit2'
-    relocate 'com.fasterxml.jackson', 'net.buycraft.plugin.internal.jackson'
-	archiveBaseName.set('buycraftx-forge')
-	archiveClassifier.set('')
+def mainClassName = "net.buycraft.plugin.forge.BuycraftPlugin"
+
+jar {
+  manifest { 
+    attributes "Main-Class": "$mainClassName"
+  }  
+
+  from {
+    configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+  }
 }
+
+configurations.compileClasspath
 
 processResources {
     // this will ensure that this task is redone when the versions change.
@@ -69,6 +73,7 @@ processResources {
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
+
 jar {
     manifest {
         attributes([
