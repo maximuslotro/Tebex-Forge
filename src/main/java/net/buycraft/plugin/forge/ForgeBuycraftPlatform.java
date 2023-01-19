@@ -72,7 +72,7 @@ public class ForgeBuycraftPlatform implements IBuycraftPlatform {
 
     @Override
     public void executeBlockingLater(Runnable runnable, long l, TimeUnit timeUnit) {
-        plugin.getExecutor().schedule(() -> BuycraftPlugin.scheduler.schedule(runnable,l), l, timeUnit);
+        plugin.getExecutor().schedule(() -> BuycraftPlugin.scheduler.schedule(runnable,0), l, timeUnit);
     }
 
     private EntityPlayerMP getPlayer(QueuedPlayer player) {
